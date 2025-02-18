@@ -10,7 +10,7 @@ const about = document.getElementById("navAbout")
 const project = document.getElementById("navProject")
 const github = document.getElementById("navGithub")
 const contact = document.getElementById("navContact")
-
+const navResume = document.getElementById("navResume")
 
 
 
@@ -78,7 +78,21 @@ navLink.addEventListener('click', () => {
   menu.classList.remove("show")
 })
 
+navResume.addEventListener("click", function(event) {
+  event.preventDefault(); // Prevent default behavior
+  const pdfUrl = this.href;
 
+  // Open in new tab
+  window.open(pdfUrl, "_blank");
+
+  // Trigger download
+  const a = document.createElement("a");
+  a.href = pdfUrl;
+  a.download = "Saravanan_M_Resume.pdf"; // Suggested filename
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});
 
 //navbar fixation 
 const navHeight = navBar.getBoundingClientRect().height
